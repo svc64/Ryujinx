@@ -63,6 +63,13 @@ namespace Ryujinx.Cpu.Jit
         }
 
         /// <inheritdoc/>
+        public ulong DebugPc
+        {
+            get => _impl.DebugPc;
+            set => _impl.DebugPc = value;
+        }
+
+        /// <inheritdoc/>
         public bool Running => _impl.Running;
 
         private readonly ExceptionCallbacks _exceptionCallbacks;
@@ -126,13 +133,6 @@ namespace Ryujinx.Cpu.Jit
 
         /// <inheritdoc/>
         public void RequestDebugStep() => _impl.RequestDebugStep();
-
-        /// <inheritdoc/>
-        public ulong DebugPc
-        {
-            get => _impl.DebugPc;
-            set => _impl.DebugPc = value;
-        }
 
         /// <inheritdoc/>
         public void StopRunning()

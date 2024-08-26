@@ -52,6 +52,15 @@ namespace Ryujinx.Cpu.LightningJit.State
 
         public bool IsAarch32 { get; set; }
 
+        public ulong ThreadUid { get; set; }
+        
+        /// <inheritdoc/>
+        public ulong DebugPc
+        {
+            get => _nativeContext.GetPc();
+            set => _nativeContext.DebugSetPc(value);
+        }
+
         internal ExecutionMode ExecutionMode
         {
             get
@@ -132,6 +141,11 @@ namespace Ryujinx.Cpu.LightningJit.State
             _undefinedCallback?.Invoke(this, address, opCode);
         }
 
+        public void RequestDebugStep()
+        {
+            
+        }
+        
         public void StopRunning()
         {
             Running = false;

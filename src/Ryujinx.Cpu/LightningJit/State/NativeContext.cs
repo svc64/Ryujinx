@@ -38,6 +38,11 @@ namespace Ryujinx.Cpu.LightningJit.State
             return GetStorage().DispatchAddress;
         }
 
+        public void DebugSetPc(ulong pc)
+        {
+            GetStorage().DispatchAddress = pc;
+        }
+
         public unsafe ulong GetX(int index)
         {
             if ((uint)index >= 32)

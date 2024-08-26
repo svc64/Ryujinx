@@ -73,6 +73,8 @@ namespace ARMeilleure.State
 
         public ulong ThreadUid { get; set; }
 
+        public ulong DebugPc { get; set; }
+
         internal ExecutionMode ExecutionMode
         {
             get
@@ -103,7 +105,6 @@ namespace ARMeilleure.State
         private readonly ExceptionCallback _undefinedCallback;
 
         internal int ShouldStep;
-        public ulong DebugPc { get; set; }
 
         public ExecutionContext(
             IJitMemoryAllocator allocator,
