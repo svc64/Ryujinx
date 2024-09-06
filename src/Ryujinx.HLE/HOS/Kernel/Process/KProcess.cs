@@ -1331,11 +1331,16 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                 _kernelContext.CriticalSection.Enter();
                 bool stepping = steppingThread != null;
                 _kernelContext.CriticalSection.Leave();
+
                 if (stepping)
                 {
                     StepBarrier.SignalAndWait();
                     StepBarrier.SignalAndWait();
                 }
+
+                KThread thread = GetThread(ctx.ThreadUid);
+                thread.DebugHalt.Set();
+
                 _parent.InterruptHandler(ctx);
             }
 
